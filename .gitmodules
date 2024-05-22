@@ -1,0 +1,9 @@
+[submodule "PicoGK"]
+	path = PicoGK
+	url = https://github.com/leap71/PicoGK
+[submodule "ShapeKernel"]
+	path = ShapeKernel
+	url = https://github.com/leap71/LEAP71_ShapeKernel
+[submodule "LatticeLibrary"]
+	path = LatticeLibrary
+	url = https://github.com/leap71/LEAP71_LatticeLibrary
