@@ -1,9 +1,16 @@
-﻿try
-{
-    PicoGK.Library.Go(.2f, PicoGKExamples.OpenVdbSimulationExchange.Task);
-}
+﻿using Leap71.Simulation;
 
+
+try
+{
+    PicoGK.Library.Go(
+        0.3f,
+        SimulationSetup.WriteTask
+        //SimulationSetup.ReadTask
+        );
+}
 catch (Exception e)
 {
-    Console.Write(e.ToString());
+    Console.WriteLine("Failed to run Task.");
+    Console.WriteLine(e.ToString());
 }
