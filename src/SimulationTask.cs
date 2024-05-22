@@ -76,7 +76,6 @@ namespace Leap71
                 // get bounding box and probe fluid domain values
                 // use your own resolution / step length
                 BBox3 oBBox                     = Sh.oGetBoundingBox(voxFluidDomain);
-                oBBox.Grow(1f);
                 float fStep                     = 2f;
                 for (float fZ = oBBox.vecMin.Z; fZ <= oBBox.vecMax.Z; fZ += fStep)
                 {
