@@ -141,7 +141,7 @@ namespace Leap71
                         Library.Log($"-  Field '{strName}' successfully retrieved as velocity vector field.");
                     }
 
-                    // density scaler field
+                    // density scalar field
                     else if ((eType == OpenVdbFile.EFieldType.ScalarField) &&
                              (strName.Contains(SimulationKeyWords.m_strDensityKey) == true))
                     {
@@ -149,7 +149,7 @@ namespace Leap71
                         Library.Log($"-  Field '{strName}' successfully retrieved as density scalar field.");
                     }
 
-                    // density scaler field
+                    // viscosity scalar field
                     else if ((eType == OpenVdbFile.EFieldType.ScalarField) &&
                              (strName.Contains(SimulationKeyWords.m_strViscosityKey) == true))
                     {
