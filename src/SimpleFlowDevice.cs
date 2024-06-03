@@ -82,10 +82,11 @@ namespace Leap71
                 // previews
                 Voxels voxPreviewFluidDomain    = Sh.voxSubtract(m_voxFluidDomain, voxGetSegmentCut(oPipeFrame, fPipeLength, fGyroidBoundRadius, 0f, 90f));
                 Voxels voxPreviewSolidDomain    = Sh.voxSubtract(m_voxSolidDomain, voxGetSegmentCut(oPipeFrame, fPipeLength, fGyroidBoundRadius, 0f, 180f));
-                Voxels voxPreviewInletPatch     = m_voxInletPatch;
+                Voxels voxPreviewInletPatch     = Sh.voxSubtract(m_voxInletPatch,  voxGetSegmentCut(oPipeFrame, fPipeLength, fGyroidBoundRadius, 0f, 180f));
                 Sh.PreviewVoxels(voxPreviewSolidDomain,  Cp.clrRock, 0.9f);
                 Sh.PreviewVoxels(voxPreviewFluidDomain,  Cp.clrBlue, 0.6f);
                 Sh.PreviewVoxels(voxPreviewInletPatch,   Cp.clrBillie, 0.5f);
+                Sh.PreviewCylinderWireframe(oInnerPipe,  Cp.clrBlack);
             }
 
             /// <summary>
