@@ -66,6 +66,14 @@ namespace Leap71
                                                             vecSurfaceDir,      // direction filter
                                                             0.0f,               // direction tolerance
                                                             (-fFluidInletVelocity) * Vector3.One);
+                //AddVectorFieldToViewer.AddToViewer(
+                //Library.oViewer(),  // Which viewer
+                //oInletField,        // What field
+                //Cp.clrGreen,        // Color
+                //50,                 // Step interval
+                //2.0f,               // Length of arrow
+                //100);               // Viewer group
+
 
                 // generate velocity vector field
                 Vector3 vecDefaultVelocity  = new Vector3(0, 0, 0);
@@ -74,11 +82,11 @@ namespace Leap71
 
 
                 // density scalar field from voxel field
-                m_oFluidDensityField = ScalarUtil.oGetConstScalarField(m_oFluidVelocityField, fFluidDensity);
+                m_oFluidDensityField = ScalarFieldUtil.oGetConstScalarField(m_oFluidVelocityField, fFluidDensity);
 
 
                 // viscosity scalar field from voxel field
-                m_oFluidViscosityField = ScalarUtil.oGetConstScalarField(m_oFluidVelocityField, fFluidViscosity);
+                m_oFluidViscosityField = ScalarFieldUtil.oGetConstScalarField(m_oFluidVelocityField, fFluidViscosity);
 
 
                 // write VDB file
@@ -133,62 +141,6 @@ namespace Leap71
             public ScalarField oGetViscosityField()
             {
                 return m_oFluidViscosityField;
-            }
-        }
-
-        public class ScalarUtil : ITraverseVectorField
-        {
-            protected VectorField   m_oInputField;
-            protected ScalarField   m_oOutputField;
-            protected float         m_fConstValue;
-
-            /// <summary>
-            /// Utility: Returns a scalar field with a constant default value and the structure of the voxel field.
-            /// </summary>
-            public static ScalarField oGetConstScalarField(VectorField oInputField, float fConstValue)
-            {
-                ScalarUtil oSetter  = new(oInputField, fConstValue);
-                oSetter.Run();
-                return oSetter.oGetOutputField();
-            }
-
-            protected ScalarUtil(VectorField oInputField, float fConstValue)
-            {
-                m_oInputField       = oInputField;
-                m_fConstValue       = fConstValue;
-                m_oOutputField      = new ScalarField();
-            }
-
-            protected void Run()
-            {
-                m_oInputField.TraverseActive(this);
-            }
-
-            /// <summary>
-            /// Sets the constant value in the output field for every active voxel in the input field.
-            /// </summary>
-            public void InformActiveValue(in Vector3 vecPosition, in Vector3 vecValue)
-            {
-                m_oOutputField.SetValue(vecPosition, m_fConstValue);
-                bool bValid = m_oOutputField.bGetValue(vecPosition, out float fCheckValue);
-
-                if (bValid == false)
-                {
-                    throw new Exception();
-                }
-
-                if (fCheckValue != m_fConstValue)
-                {
-                    throw new Exception();
-                }
-            }
-
-            /// <summary>
-            /// Returns the output scalar field.
-            /// </summary>
-            protected ScalarField oGetOutputField()
-            {
-                return m_oOutputField;
             }
         }
     }
