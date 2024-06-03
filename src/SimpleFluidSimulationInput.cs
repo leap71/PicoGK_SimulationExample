@@ -24,15 +24,6 @@ namespace Leap71
 {
     namespace Simulation
     {
-        public static class SimulationKeyWords
-        {
-            public readonly static string m_strFluidKey     = "fluid";
-            public readonly static string m_strSolidKey     = "solid";
-            public readonly static string m_strDensityKey   = "density";
-            public readonly static string m_strViscosityKey = "viscosity";
-            public readonly static string m_strVelocityKey  = "velocity";
-        }
-
         public class SimpleFluidSimulationInput
         {
             // fluid
