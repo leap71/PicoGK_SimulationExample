@@ -5,8 +5,13 @@ try
 {
     PicoGK.Library.Go(
         0.3f,
-        SimulationSetup.WriteTask
-        //SimulationSetup.ReadTask
+
+        //SimulationSetup.WriteFluidSimulationTask
+        //SimulationSetup.ReadFluidSimulationTask
+
+        //SimulationSetup.MeshDisplacementTask
+        SimulationSetup.WriteMechanicalSimulationTask
+        //SimulationSetup.ReadMechanicalSimulationTask
         );
 }
 catch (Exception e)
