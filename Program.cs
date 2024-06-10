@@ -10,8 +10,11 @@ try
         //SimulationSetup.ReadFluidSimulationTask
 
         //SimulationSetup.MeshDisplacementTask
-        SimulationSetup.WriteMechanicalSimulationTask
+        //SimulationSetup.WriteMechanicalSimulationTask
         //SimulationSetup.ReadMechanicalSimulationTask
+
+        CantileverBeam.WriteCantileverBeam
+
         );
 }
 catch (Exception e)
